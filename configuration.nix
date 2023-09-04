@@ -13,5 +13,7 @@
     "nixos-config=/etc/nixos/rebuild.nix"
   ];
 
+  documentation.enable = false;
+
   system.stateVersion = "23.05";
 }
