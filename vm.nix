@@ -6,7 +6,7 @@
 
   virtualisation = {
     cores = 2;
-    memorySize = 2 * 1024;
+    memorySize = 3 * 1024;
     diskSize = 5 * 1024;
     writableStoreUseTmpfs = false;
   };
