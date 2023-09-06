@@ -1,19 +1,48 @@
-# This file is imported by vm.nix and rebuild.nix. Declare services and common
-# options here.
+# This file is imported by vm.nix and rebuild.nix. Declare services here.
 
-{ pkgs, ... }: {
+{ pkgs, modulesPath, config, ... }:
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+let
+  yourAppPort = 4242;
+in
+{
 
-  nix.nixPath = [
-    "nixpkgs=${pkgs.path}"
-    # running nixos-rebuild uses the nixos-config path. We use the rebuild.nix
-    # file here. It imports configuration.nix and defines a few things we need
-    # as we are in a VM.
-    "nixos-config=/etc/nixos/rebuild.nix"
+  ## Task 1
+
+  imports = [
+    ./modules/your_app
   ];
 
-  documentation.enable = false;
+  services.bitcoind."regtest" = {
+    enable = true;
+    rpc = {
+      port = 18444;
+      users.workshop = {
+        name = "workshop";
+        # hashed password can be generated with https://github.com/bitcoin/bitcoin/blob/master/share/rpcauth/rpcauth.py
+        # or https://jlopp.github.io/bitcoin-core-rpc-auth-generator/
+        # Here, the password is "btcpp23berlin".
+        passwordHMAC = "261106eacc7b4ff02628fbda556d65ec$bdc62ae101fbe7948c44b5475e2b56d046e326ce5d4f81b55e0861a66801226b";
+      };
+    };
+    extraConfig = ''
+      regtest=1
+    '';
+  };
 
-  system.stateVersion = "23.05";
+  ## Task 2
+
+  services.your_app = {
+    enable = true;
+    port = yourAppPort;
+    bitcoin = {
+      rpcHost = "localhost";
+      rpcPort = config.services.bitcoind."regtest".rpc.port;
+      rpcUser = "workshop";
+      rpcPassword = "btcpp23berlin";
+    };
+  };
+
+  
+
 }

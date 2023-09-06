@@ -5,6 +5,7 @@
 {
   imports = [
     "${modulesPath}/virtualisation/qemu-vm.nix"
+    ./common.nix
     ./configuration.nix
   ];
 
