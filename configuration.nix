@@ -1,20 +1,23 @@
 # This file is imported by vm.nix and rebuild.nix. Declare services here.
 
-{ pkgs, modulesPath, config, ... }:
-
+# This module is a function with the following arguments:
+{
+  pkgs, # nixpkgs
+  modulesPath, # the path to the NixOS modules
+  config, # the current system configuration
+  ...
+}:
 let
   yourAppPort = 4242;
 in
 {
-
-  ## Task 1
-
   imports = [
     ./modules/your_app
   ];
 
+  ## Task 1
   services.bitcoind."regtest" = {
-    enable = true;
+    enable = false;
     rpc = {
       port = 18444;
       users.workshop = {
@@ -30,19 +33,9 @@ in
     '';
   };
 
-  ## Task 2
-
   services.your_app = {
     enable = true;
-    port = yourAppPort;
-    bitcoin = {
-      rpcHost = "localhost";
-      rpcPort = config.services.bitcoind."regtest".rpc.port;
-      rpcUser = "workshop";
-      rpcPassword = "btcpp23berlin";
-    };
+    ## FIXME: Task 2.3: declare the options your_app options defined in 2.1
   };
-
-  
 
 }

@@ -9,101 +9,63 @@ in
 {
   # imports = [ paths of other modules ];
 
+  # option declarations
   options = {
-    # option declarations
 
     services.your_app = {
-      enable = mkEnableOption "YOUR_APP";
-
-      port = mkOption {
-        type = types.port;
-        default = 4242;
-        example = 4242;
-        description = "The Bitcoin Core RPC server port to connect to";
-      };
-
-      bitcoin = {
-        rpcHost = mkOption {
-          type = types.str;
-          default = "localhost";
-          example = "127.0.0.1";
-          description = "The Bitcoin Core RPC server host to connect to";
-        };
-
-        rpcPort = mkOption {
-          type = types.port;
-          default = 8334;
-          example = 8334;
-          description = "The Bitcoin Core RPC server port to connect to";
-        };
-
-        rpcUser = mkOption {
-          type = types.str;
-          default = null;
-          example = "user";
-          description = "The Bitcoin Core RPC user used to authenticate to the RPC server";
-        };
-
-        rpcPassword = mkOption {
-          type = types.str;
-          default = null;
-          example = "password";
-          description = "The Bitcoin Core RPC password used to authenticate to the RPC server";
-        };
-      };
+      enable = mkEnableOption "your_app";
+      ## FIXME: Task 2.1: Declare options for the your_app service
 
     };
 
   };
 
-  # Option definitions.
+  # Option definitions: The place where we use the options declared above to
+  # define options from other NixOS modules.
+  #
   # `mkIf` makes the following option definitions conditional on the module being enabled.
   # See https://nixos.org/manual/nixos/stable/#sec-option-definitions-delaying-conditionals
   config = mkIf cfg.enable {
 
-    networking.firewall.allowedTCPPorts = [ cfg.port ];
-
-
     # We define the systemd service called your_app.
     # NixOS takes care of creating the necessary service files.
-    systemd.services.your_app = {
+    systemd.services.your_app_server = {
       description = "your_app server daemon";
 
-      # TODO:
+      # systemd's `wantedBy` means that this service should be started for the
+      # specified target to be reached. The `multi-user.target` normally defines
+      # a system state where all network services are started up and the system
+      # will accept logins
       wantedBy = [ "multi-user.target" ];
+      # This should however only happen after the target `network-online` is
+      # reached as we are using the network interfaces in our your_app
       after = [ "network-online.target" ];
 
-      # TODO:
+      # The systemd service configuration
+      # See https://www.freedesktop.org/software/systemd/man/systemd.service.html
       serviceConfig = {
         ExecStart = ''${pkg}/bin/your_app \
-          --rpc-host ${cfg.bitcoin.rpcHost} \
-          --rpc-port ${toString cfg.bitcoin.rpcPort} \
-          --rpc-user ${cfg.bitcoin.rpcUser} \
-          --rpc-password ${cfg.bitcoin.rpcPassword} \
-          server ${toString cfg.port}
+          --rpc-host FIXME: Task 2.2 \
+          --rpc-port FIXME: Task 2.2 \
+          --rpc-user FIXME: Task 2.2 \
+          --rpc-password FIXME: Task 2.2 \
+          server FIXME: Task 2.2
         '';
-
-        # very basic hardening
-        PermissionsStartOnly = true;
-        MemoryDenyWriteExecute = true;
-
-        # TODO:
-        DynamicUser = true;
       };
 
     };
 
-
+    # Task 3
     systemd.services.your_app_backup = {
       description = "your_app server backup";
       after = [ "network-online.target" ];
       script = ''
       echo "starting backup..."
       ${pkg}/bin/your_app \
-        --rpc-host ${cfg.bitcoin.rpcHost} \
-        --rpc-port ${toString cfg.bitcoin.rpcPort} \
-        --rpc-user ${cfg.bitcoin.rpcUser} \
-        --rpc-password ${cfg.bitcoin.rpcPassword} \
+        --rpc-host FIXME: Task 4 \
+        --rpc-port FIXME: Task 4 \
+        --rpc-user FIXME: Task 4 \
+        --rpc-password FIXME: Task 4 \
         backup
       echo "backup done"
       '';
