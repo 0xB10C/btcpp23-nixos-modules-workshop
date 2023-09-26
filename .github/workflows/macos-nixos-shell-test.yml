@@ -1,0 +1,19 @@
+name: MacOS nixos-shell test
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+    
+jobs:
+  test-macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@main
+    - name: nix version
+      run: nix --version
+    - name: start vm
+      run: nix-shell -p nixos-shell --run 'nixos-shell'
