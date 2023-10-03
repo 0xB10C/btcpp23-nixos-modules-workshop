@@ -13,6 +13,7 @@
     forwardPorts = [
       { from = "host"; host.port = 4242; guest.port = 4242; }
     ];
+    host.pkgs = import pkgs.path { system = "x86_64-darwin"; };
   };
 
   # nixos-shell disables the firewall by default. For this workshop we need it
