@@ -14,8 +14,8 @@
   },
 
   "onCreateCommand": {
-    "fix nix permissions and install qemu-kvm": "sudo apt install qemu-kvm acl; sudo setfacl -k /tmp"
+    "fix nix permissions": "sudo apt install acl; sudo setfacl -k /tmp"
   },
 
-  "postAttachCommand": "nixos-shell --verbose"
+  "postAttachCommand": "#nixos-shell --verbose"
 }
