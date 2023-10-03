@@ -1,9 +1,21 @@
 {
   "name": "nixos-modules-workshop",
+
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  
   "features": {
     "ghcr.io/devcontainers/features/nix:1": {
       "packages": [ "nixos-shell" ]
     }
-  }
+  },
+
+  "hostRequirements": {
+    "cpus": 4
+  },
+
+  "onCreateCommand": {
+    "fix nix permissions and install qemu-kvm": "sudo apt install qemu-kvm acl; sudo setfacl -k /tmp"
+  },
+
+  "postAttachCommand": "nixos-shell --verbose"
 }
