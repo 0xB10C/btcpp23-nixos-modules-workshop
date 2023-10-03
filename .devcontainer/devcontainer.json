@@ -1,0 +1,9 @@
+{
+  "name": "nixos-modules-workshop",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/nix:1": {
+      "packages": [ "nixos-shell" ]
+    }
+  }
+}
