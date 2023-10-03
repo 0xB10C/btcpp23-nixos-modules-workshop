@@ -62,10 +62,10 @@ in
       script = ''
       echo "starting backup..."
       ${pkg}/bin/your_app \
-        --rpc-host FIXME: Task 4 \
-        --rpc-port FIXME: Task 4 \
-        --rpc-user FIXME: Task 4 \
-        --rpc-password FIXME: Task 4 \
+        --rpc-host FIXME: Task 3 \
+        --rpc-port FIXME: Task 3 \
+        --rpc-user FIXME: Task 3 \
+        --rpc-password FIXME: Task 3 \
         backup
       echo "backup done"
       '';

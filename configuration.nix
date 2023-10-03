@@ -38,4 +38,13 @@ in
     ## FIXME: Task 2.3: declare the options your_app options defined in 2.1
   };
 
+
+  # Task 5
+  virtualisation.oci-containers.containers = {
+    #"plaintext-hello" = {
+    #  image = "nginxdemos/hello:plain-text";
+    #  ports = [ "8000:80" ];
+    #};
+  };
+
 }
