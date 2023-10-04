@@ -16,6 +16,42 @@ in
       enable = mkEnableOption "your_app";
       # FIXME: Task 2.1: Declare options for the your_app service
       # use mkOption ! 
+
+      port = mkOption {
+        type = types.port;
+        default = null;
+        example = 8282;
+        description = lib.mdDoc "The webserver port your_app is listening on.";
+      };
+
+      rpc = {
+        host = mkOption {
+          type = types.str;
+          default = "localhost";
+          example = "localhost";
+          description = lib.mdDoc "The Bitcoin Core RPC host to use.";
+        };
+
+        port = mkOption {
+          type = types.port;
+          default = 8332;
+          example = 18884;
+          description = lib.mdDoc "The Bitcoin Core RPC port to use.";
+        };
+
+        password = mkOption {
+          type = types.str;
+          default = null;
+          description = lib.mdDoc "The Bitcoin Core RPC password to use. This will be world-readable!";
+        };
+
+        user = mkOption {
+          type = types.str;
+          default = null;
+          example = "username";
+          description = lib.mdDoc "The Bitcoin Core RPC username to use.";
+        };
+      }; 
     };
 
   };
