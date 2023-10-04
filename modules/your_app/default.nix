@@ -81,11 +81,11 @@ in
       # See https://www.freedesktop.org/software/systemd/man/systemd.service.html
       serviceConfig = {
         ExecStart = ''${pkg}/bin/your_app \
-          --rpc-host FIXME: Task 2.2 \
-          --rpc-port FIXME: Task 2.2 \
-          --rpc-user FIXME: Task 2.2 \
-          --rpc-password FIXME: Task 2.2 \
-          server FIXME: Task 2.2
+          --rpc-host ${cfg.rpc.host} \
+          --rpc-port ${toString cfg.rpc.port} \
+          --rpc-user ${cfg.rpc.user} \
+          --rpc-password ${cfg.rpc.password} \
+          server ${toString cfg.port}
         '';
         # FIXME: Task 3.3: your_app hardening 
       };
