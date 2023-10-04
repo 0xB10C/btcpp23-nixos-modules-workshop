@@ -21,7 +21,7 @@
 
   "postAttachCommand": {
     "shell": "echo '\nwaiting for the VM to start..\n' && until ssh vm 'echo ready'; do sleep 10; done && echo '\nVM is ready\n'",
-    "vm": "nixos-shell vm-codespaces.nix --verbose"
+    "vm": "sudo setfacl -k /tmp && nixos-shell vm-codespaces.nix --verbose"
   },
 
   "customizations": {
