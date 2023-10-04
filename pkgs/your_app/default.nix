@@ -5,9 +5,9 @@
 
     src = ./.;
 
-    cargoSha256 = "sha256-phxI88a52gGQobR7q+yQJBdQCsT+K+kz1oLYLipv0oE=";
-    #cargoSha256 = "sha256-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=";
-
+    cargoLock = {
+      lockFile = ./Cargo.lock;
+    };
 
     # Running tests increases the build time. We don't want that for the workshop.
     doCheck = false;
