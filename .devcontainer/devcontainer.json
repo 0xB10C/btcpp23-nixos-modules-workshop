@@ -27,12 +27,14 @@
   "customizations": {
     "codespaces": {
       "openFiles": [
-        "configuration.nix"
+        "configuration.nix",
+        "modules/your_app/default.nix"
       ]
     },
     "vscode": {
       "extensions": [
-        "bbenoist.nix"
+        "bbenoist.nix",
+        "wayou.vscode-todo-highlight"
       ]
     }
   }
