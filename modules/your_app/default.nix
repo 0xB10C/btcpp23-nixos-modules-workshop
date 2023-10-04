@@ -87,7 +87,26 @@ in
           --rpc-password ${cfg.rpc.password} \
           server ${toString cfg.port}
         '';
-        # FIXME: Task 3.3: your_app hardening 
+        # FIXME: Task 3.3: your_app hardening
+        PrivateTmp = true;
+        ProtectSystem = "strict";
+        ProtectHome = true;
+        NoNewPrivileges = true;
+        PrivateDevices = true;
+        MemoryDenyWriteExecute = true;
+        ProtectKernelTunables = true;
+        ProtectKernelModules = true;
+        ProtectKernelLogs = true;
+        ProtectClock = true;
+        ProtectProc = "invisible";
+        ProcSubset = "pid";
+        ProtectControlGroups = true;
+        RestrictAddressFamilies = "AF_UNIX AF_INET AF_INET6";
+        RestrictNamespaces = true;
+        LockPersonality = true;
+        PrivateUsers = true;
+        RestrictSUIDSGID = true;
+        RemoveIPC = true;
       };
     };
   };
