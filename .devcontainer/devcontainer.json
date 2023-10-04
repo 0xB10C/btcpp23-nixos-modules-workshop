@@ -17,5 +17,5 @@
     "fix nix permissions": "sudo apt install acl; sudo setfacl -k /tmp"
   },
 
-  "postAttachCommand": "#nixos-shell --verbose"
+  "postAttachCommand": "nixos-shell --verbose"
 }
