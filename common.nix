@@ -30,5 +30,17 @@
   # enable ssh access to the VM
   services.openssh.enable = true;
 
+  # from https://github.com/Mic92/nixos-shell/blob/65489e7eeef8eeea43e1e4218ad1b99d58852c7c/share/modules/nixos-shell-config.nix#L35
+  # Allow passwordless ssh login with the user's key if it exists.
+  (
+    let
+      keys = map (key: "${builtins.getEnv "HOME"}/.ssh/${key}")
+        [ "id_rsa.pub" "id_ecdsa.pub" "id_ed25519.pub" ];
+    in
+    {
+      users.users.root.openssh.authorizedKeys.keyFiles = lib.filter builtins.pathExists keys;
+    }
+  )
+
   system.stateVersion = "23.05";
 }
