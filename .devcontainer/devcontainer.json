@@ -13,9 +13,5 @@
     "cpus": 4
   },
 
-  "onCreateCommand": {
-    "fix nix permissions": "sudo setfacl -k /tmp"
-  },
-
-  "postAttachCommand": "sudo setfacl -k /tmp && nixos-shell --verbose"
+  "postAttachCommand": "setfacl -k /tmp && nixos-shell --verbose"
 }
