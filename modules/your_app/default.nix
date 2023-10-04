@@ -14,8 +14,8 @@ in
 
     services.your_app = {
       enable = mkEnableOption "your_app";
-      ## FIXME: Task 2.1: Declare options for the your_app service
-
+      # FIXME: Task 2.1: Declare options for the your_app service
+      # use mkOption ! 
     };
 
   };
@@ -51,31 +51,8 @@ in
           --rpc-password FIXME: Task 2.2 \
           server FIXME: Task 2.2
         '';
+        # FIXME: Task 3.3: your_app hardening 
       };
-
-    };
-
-    # Task 3
-    systemd.services.your_app_backup = {
-      description = "your_app server backup";
-      after = [ "network-online.target" ];
-      script = ''
-      echo "starting backup..."
-      ${pkg}/bin/your_app \
-        --rpc-host FIXME: Task 3 \
-        --rpc-port FIXME: Task 3 \
-        --rpc-user FIXME: Task 3 \
-        --rpc-password FIXME: Task 3 \
-        backup
-      echo "backup done"
-      '';
-      serviceConfig.Type = "oneshot";
-    };
-
-    systemd.timers.your_app_backup = {
-      wantedBy = [ "timers.target" ];
-      partOf = [ "your_app_backup.service" ];
-      timerConfig.OnCalendar = "minutely";
     };
   };
 }
