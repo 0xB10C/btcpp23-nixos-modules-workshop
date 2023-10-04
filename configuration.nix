@@ -62,4 +62,13 @@ in
   };
 
   # FIXME: Task 4.3: empty NixOS container
+  containers.empty = {
+    autoStart = true;
+    privateNetwork = true;
+    config = { config, pkgs, ... }: {
+      # An emtpy NixOS container.
+
+      system.stateVersion = "23.05";
+    };
+  };
 }
