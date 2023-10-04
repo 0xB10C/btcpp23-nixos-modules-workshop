@@ -5,7 +5,7 @@
   
   "features": {
     "ghcr.io/devcontainers/features/nix:1": {
-      "packages": [ "nixos-shell", "acl", "qemu" ]
+      "packages": [ "nixos-shell", "acl", "qemu", "nixos-rebuild" ]
     }
   },
 
@@ -17,7 +17,7 @@
     "generate ssh key": "ssh-keygen -t ed25519"
   },
 
-  "postAttachCommand": "setfacl -k /tmp && nixos-shell vm-codespaces.nix --verbose -vv",
+  "postStartCommand": "setfacl -k /tmp && nixos-shell vm-codespaces.nix --verbose -vv",
 
   "customizations": {
     "codespaces": {
