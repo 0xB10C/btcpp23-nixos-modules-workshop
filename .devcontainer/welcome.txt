@@ -1,7 +1,7 @@
 0xB10C's NixOS Module workshop
 
 The NixOS VM is starting and will be ready shortly.
-    - use `ssh vm` to access it 
-    - use `sh nixos-rebuid-vm.sh` to do a `nixos-rebuild switch` of the VM
     - while `nixos-rebuild switch` inside them VM works, it is not recommended. The VM emulation makes it very slow.
+    - use `sh nixos-rebuid-vm.sh` to do a `nixos-rebuild switch` of the VM
+    - use `ssh vm` to access it 
 
