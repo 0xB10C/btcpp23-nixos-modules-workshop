@@ -18,7 +18,7 @@ in
 
   ## Task 1
   services.bitcoind."regtest" = {
-    enable = false;
+    enable = true;
     rpc = {
       port = 18444;
       users.workshop = {
