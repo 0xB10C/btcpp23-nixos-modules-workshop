@@ -34,7 +34,7 @@ in
   };
 
   services.your_app = {
-    enable = true;
+    enable = false;
     ## FIXME: Task 2.3: declare the options your_app options defined in 2.1
   };
 
