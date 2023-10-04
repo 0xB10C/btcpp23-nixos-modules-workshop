@@ -14,10 +14,11 @@
   },
 
   "onCreateCommand": {
-    "fix nix permissions": "sudo apt install acl; sudo setfacl -k /tmp"
+    "fix nix permissions": "sudo apt install acl; sudo setfacl -k /tmp",
+    "setup ssh key": "ssh-keygen -N '' -t ed25519 -f /home/vscode/.ssh/id_ed25519 && sh /workspaces/btcpp23-nixos-modules-workshop/.devcontainer/write-vm-ssh-config.sh"
   },
 
-  "postAttachCommand": "ssh-keygen -N '' -t ed25519 -f /home/vscode/.ssh/id_ed25519 && sh /workspaces/btcpp23-nixos-modules-workshop/.devcontainer/write-vm-ssh-config.sh && nixos-shell vm-codespaces.nix --verbose -v",
+  "postAttachCommand": "nixos-shell vm-codespaces.nix --verbose",
 
   "customizations": {
     "codespaces": {
