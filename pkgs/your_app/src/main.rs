@@ -34,7 +34,7 @@ enum Commands {
         port: u16,
     },
     /// Run the backup functionallity
-    Backup,
+    // Backup,
 }
 
 fn main() {
@@ -54,7 +54,7 @@ fn main() {
 
     match &cli.command {
         Commands::Server { port } => server(*port),
-        Commands::Backup => backup(),
+        //Commands::Backup => backup(),
     }
 }
 
@@ -64,6 +64,8 @@ fn server(port: u16) {
     server.listen(("0.0.0.0", port)).unwrap();
 }
 
+/*
 fn backup() {
     println!("backup..");
 }
+*/
