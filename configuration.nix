@@ -38,6 +38,13 @@ in
     # FIXME: Task 2.3: declare the options your_app options defined in 2.1
     # Use `yourAppPort` as port.
     enable = false;
+    port = yourAppPort;
+    rpc = {
+      host = "localhost";
+      port = config.services.bitcoind."regtest".rpc.port;
+      user = "workshop";
+      password = "btcpp23berlin";
+    };
   };
 
   # FIXME: 2.4: Open the firewall
