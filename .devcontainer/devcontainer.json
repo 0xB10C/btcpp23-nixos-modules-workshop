@@ -12,25 +12,22 @@
   "hostRequirements": {
     "cpus": 4
   },
-  
+
   "onCreateCommand": {
-    "test": "echo created"
+    "fix nix permissions": "sudo apt install acl; sudo setfacl -k /tmp"
   },
 
-  "postAttachCommand": {
-    "vm": "echo attached #setfacl -k /tmp && nixos-shell vm-codespaces.nix --verbose -vv"
-  },
-
-  "postStartCommand": {
-    "0 - generate ssh key": "ssh-keygen -t ed25519",
-    "1 - write .ssh/config": "sh /workspaces/.devcontainer/write-vm-sh-config.sh",
-    "2 - vm": "setfacl -k /tmp && nixos-shell vm-codespaces.nix --verbose -vv"
-  },
+  "postAttachCommand": "ssh-keygen -N '' -t ed25519 -f /home/vscode/.ssh/id_ed25519 && sh /workspaces/btcpp23-nixos-modules-workshop/.devcontainer/write-vm-ssh-config.sh && nixos-shell vm-codespaces.nix --verbose -v",
 
   "customizations": {
     "codespaces": {
       "openFiles": [
         "configuration.nix"
+      ]
+    },
+    "vscode": {
+      "extensions": [
+        "bbenoist.nix"
       ]
     }
   }
