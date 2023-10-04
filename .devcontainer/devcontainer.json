@@ -14,7 +14,8 @@
   },
 
   "postCreateCommand": {
-    "generate ssh key": "ssh-keygen -t ed25519"
+    "0 - generate ssh key": "ssh-keygen -t ed25519",
+    "1 - write .ssh/config": "sh /workspaces/.devcontainer/write-vm-sh-config.sh"
   },
 
   "postStartCommand": "setfacl -k /tmp && nixos-shell vm-codespaces.nix --verbose -vv",
