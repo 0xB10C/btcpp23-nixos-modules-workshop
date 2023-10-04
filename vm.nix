@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
 
   imports = [
     ./configuration.nix
@@ -6,9 +6,9 @@
   ];
 
   virtualisation = {
-    cores = 2;
-    memorySize = 3 * 1024;
-    diskSize = 5 * 1024;
+    cores = lib.mkDefault 2;
+    memorySize = lib.mkDefault (3 * 1024);
+    diskSize = lib.mkDefault (5 * 1024);
     writableStoreUseTmpfs = false;
     forwardPorts = [
       { from = "host"; host.port = 4242; guest.port = 4242; }

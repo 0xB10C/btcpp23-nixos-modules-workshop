@@ -13,5 +13,5 @@
     "cpus": 4
   },
 
-  "postAttachCommand": "setfacl -k /tmp && nixos-shell --verbose"
+  "postAttachCommand": "setfacl -k /tmp && nixos-shell vm-codespaces.nix --verbose"
 }
