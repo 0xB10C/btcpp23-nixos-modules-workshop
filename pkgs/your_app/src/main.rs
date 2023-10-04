@@ -33,7 +33,7 @@ enum Commands {
         /// Webserver port
         port: u16,
     },
-    /// Run the backup functionallity
+    // Run the backup functionallity
     // Backup,
 }
 
