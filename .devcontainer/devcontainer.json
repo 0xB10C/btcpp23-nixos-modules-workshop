@@ -5,7 +5,7 @@
   
   "features": {
     "ghcr.io/devcontainers/features/nix:1": {
-      "packages": [ "nixos-shell", "qemu" ]
+      "packages": [ "nixos-shell", "acl", "qemu" ]
     }
   },
 
@@ -14,8 +14,7 @@
   },
 
   "onCreateCommand": {
-    "fix nix permissions": "sudo apt install acl; sudo setfacl -k /tmp",
-    "try running nixos-shell once": "nixos-shell --verbose || true"
+    "fix nix permissions": "sudo setfacl -k /tmp"
   },
 
   "postAttachCommand": "sudo setfacl -k /tmp && nixos-shell --verbose"
