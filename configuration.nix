@@ -54,9 +54,11 @@ in
 
   # Task 4
   virtualisation.oci-containers.containers = {
-    #"plaintext-hello" = {
+    "plaintext-hello" = {
       # FIXME: Task 4.2: declare `image` and `ports` options
-    #};
+      image = "nginxdemos/hello:plain-text";
+      ports = [ "8000:80" ];
+    };
   };
 
   # FIXME: Task 4.3: empty NixOS container
