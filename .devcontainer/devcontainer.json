@@ -5,7 +5,7 @@
   
   "features": {
     "ghcr.io/devcontainers/features/nix:1": {
-      "packages": [ "nixos-shell", "acl", "qemu", "nixos-rebuild" ]
+      "packages": [ "nixos-shell", "netcat-gnu", "qemu", "nixos-rebuild" ]
     }
   },
 
@@ -15,10 +15,14 @@
 
   "onCreateCommand": {
     "fix nix permissions": "sudo apt install acl; sudo setfacl -k /tmp",
-    "setup ssh key": "ssh-keygen -N '' -t ed25519 -f /home/vscode/.ssh/id_ed25519 && sh /workspaces/btcpp23-nixos-modules-workshop/.devcontainer/write-vm-ssh-config.sh"
+    "setup ssh key": "ssh-keygen -N '' -t ed25519 -f /home/vscode/.ssh/id_ed25519 && sh /workspaces/btcpp23-nixos-modules-workshop/.devcontainer/write-vm-ssh-config.sh",
+    "welcome message": "sudo cp .devcontainer/welcome.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt"
   },
 
-  "postAttachCommand": "nixos-shell vm-codespaces.nix --verbose",
+  "postAttachCommand": {
+    "shell": "until ssh vm -c 'echo VM now up!'; do sleep 5; done",
+    "vm": "nixos-shell vm-codespaces.nix --verbose"
+  },
 
   "customizations": {
     "codespaces": {
