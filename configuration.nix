@@ -12,6 +12,7 @@ let
 in
 {
   imports = [
+    # imports the your_app module
     ./modules/your_app
   ];
 
