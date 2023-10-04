@@ -35,17 +35,19 @@ in
   };
 
   services.your_app = {
+    # FIXME: Task 2.3: declare the options your_app options defined in 2.1
+    # Use `yourAppPort` as port.
     enable = false;
-    ## FIXME: Task 2.3: declare the options your_app options defined in 2.1
   };
 
+  # FIXME: 2.4: Open the firewall
 
-  # Task 5
+  # Task 4
   virtualisation.oci-containers.containers = {
     #"plaintext-hello" = {
-    #  image = "nginxdemos/hello:plain-text";
-    #  ports = [ "8000:80" ];
+      # FIXME: Task 4.2: declare `image` and `ports` options
     #};
   };
 
+  # FIXME: Task 4.3: empty NixOS container
 }
