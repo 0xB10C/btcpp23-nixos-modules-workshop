@@ -37,5 +37,7 @@ in
   # Allow passwordless ssh login with the user's key if it exists.
   users.users.root.openssh.authorizedKeys.keyFiles = lib.filter builtins.pathExists keys;
 
+  nix.settings.experimental-features = [ "nix-command" ];
+
   system.stateVersion = "23.05";
 }
