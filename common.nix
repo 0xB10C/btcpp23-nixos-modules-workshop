@@ -27,5 +27,8 @@
     alias nixos-rebuild='nixos-rebuild --verbose -vv --fast'
   '';
 
+  # enable ssh access to the VM
+  services.openssh.enable = true;
+
   system.stateVersion = "23.05";
 }
