@@ -48,6 +48,9 @@ in
   };
 
   # FIXME: 2.4: Open the firewall
+  networking.firewall.allowedTCPPorts = [
+    config.services.your_app.port
+  ];
 
   # Task 4
   virtualisation.oci-containers.containers = {
