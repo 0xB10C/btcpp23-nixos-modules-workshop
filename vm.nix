@@ -25,10 +25,6 @@
       mountHome = false;
       mountNixProfile = false;
       extraMounts = {
-        "/root/tasks" = {
-          target = ./tasks;
-          cache = "none";
-        };
         "/etc/nixos/" = {
           target = ./.;
           cache = "none";
