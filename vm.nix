@@ -13,6 +13,7 @@
     forwardPorts = [
       { from = "host"; host.port = 4242; guest.port = 4242; }
       { from = "host"; host.port = 2222; guest.port = 22; }
+      { from = "host"; host.port = 8000; guest.port = 8000; }
     ];
   };
 
