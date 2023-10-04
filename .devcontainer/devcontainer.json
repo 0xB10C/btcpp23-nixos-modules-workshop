@@ -20,7 +20,7 @@
   },
 
   "postAttachCommand": {
-    "shell": "echo '\nwaiting for the VM to start..\n' && until bash -c \"echo checking... && ssh vm \"test\"\"; do sleep 10; done && echo 'VM is ready'",
+    "shell": "echo '\nwaiting for the VM to start..\n' && until ssh vm 'test'; do sleep 10; done && echo 'VM is ready'",
     "vm": "nixos-shell vm-codespaces.nix --verbose"
   },
 
