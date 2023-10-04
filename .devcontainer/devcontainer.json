@@ -20,7 +20,7 @@
   },
 
   "postAttachCommand": {
-    "shell": "until ssh vm -c 'echo VM now up!'; do sleep 5; done",
+    "shell": "echo '\nwaiting for the VM to start..\n' && until ssh vm 'echo \"\nVM is ready!\"'; do sleep 10; done",
     "vm": "nixos-shell vm-codespaces.nix --verbose"
   },
 
