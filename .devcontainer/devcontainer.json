@@ -19,6 +19,10 @@
     "welcome message": "sudo cp .devcontainer/welcome.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt"
   },
 
+  "updateContentCommand": {
+    "prebuilt vm": "sudo setfacl -k /tmp && nixos-shell vm-codespaces-prebuilt.nix --verbose"
+  },
+
   "postAttachCommand": {
     "shell": "echo '\nwaiting for the VM to start..\n' && until ssh vm 'echo ready'; do sleep 10; done && echo '\nVM is ready\n'",
     "vm": "sudo setfacl -k /tmp && nixos-shell vm-codespaces.nix --verbose"
